@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krishna Urban Discharge Accountability Framework — Technical Policy Representation | VBPC</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap');
+
+:root {
+  --midnight: #0d1117;
+  --deep-navy: #111827;
+  --navy: #1e2d40;
+  --teal: #0e7490;
+  --teal-light: #22d3ee;
+  --teal-faint: #ecfeff;
+  --gold: #d97706;
+  --gold-light: #fbbf24;
+  --gold-faint: #fffbeb;
+  --ivory: #fefce8;
+  --cream: #fffdf7;
+  --warm: #92400e;
+  --ink: #0f172a;
+  --muted: #475569;
+  --rule: #cbd5e1;
+  --river: #0369a1;
+  --river-light: #7dd3fc;
+  --M: 64px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: linear-gradient(135deg, #0d1117 0%, #1a2744 50%, #0d2137 100%);
+  min-height: 100vh;
+  padding: 48px 20px;
+  font-family: 'Crimson Pro', Georgia, serif;
+}
+
+/* WATERMARK RIVER */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      -20deg,
+      transparent 0px,
+      transparent 60px,
+      rgba(14,116,144,0.03) 60px,
+      rgba(14,116,144,0.03) 61px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── COVER ── */
+.cover {
+  background: var(--deep-navy);
+  border: 1px solid rgba(14,116,144,0.3);
+  border-top: 5px solid var(--teal);
+  margin-bottom: 3px;
+  padding: 52px var(--M) 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::after {
+  content: 'కృష్ణా';
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: 'Playfair Display', serif;
+  font-size: 120px;
+  color: rgba(14,116,144,0.06);
+  font-weight: 800;
+  letter-spacing: 10px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.cover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 36px;
+}
+
+.org-badge {
+  display: inline-block;
+  border: 1px solid rgba(34,211,238,0.3);
+  padding: 4px 12px;
+  margin-bottom: 12px;
+}
+
+.org-badge-text {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--teal-light);
+  text-transform: uppercase;
+}
+
+.cover-org {
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+  max-width: 360px;
+}
+
+.cover-meta {
+  text-align: right;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.9;
+  font-family: 'Crimson Pro', serif;
+}
+
+.cover-meta strong {
+  color: var(--teal-light);
+  font-weight: 500;
+}
+
+.cover-title {
+  margin-bottom: 20px;
+}
+
+.cover-title-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9.5px;
+  letter-spacing: 4px;
+  color: var(--gold-light);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.cover-title h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #f1f5f9;
+  line-height: 1.25;
+  max-width: 680px;
+}
+
+.cover-title h1 em {
+  color: var(--teal-light);
+  font-style: normal;
+}
+
+.cover-subtitle {
+  font-family: 'Crimson Pro', serif;
+  font-size: 15.5px;
+  color: #94a3b8;
+  font-style: italic;
+  margin-top: 10px;
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+.teal-rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--teal), rgba(14,116,144,0.1));
+  margin: 24px 0;
+}
+
+.cover-bottom {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.cover-tag {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.cover-tag-label {
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: #475569;
+  text-transform: uppercase;
+}
+
+.cover-tag-value {
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* ── SECTION PAGES ── */
+.sheet {
+  background: var(--cream);
+  margin-bottom: 3px;
+  padding: 52px var(--M) 56px;
+  position: relative;
+}
+
+.sheet.dark {
+  background: var(--navy);
+}
+
+/* SECTION HEADER */
+.sec-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 32px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sec-num {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--teal);
+  background: var(--teal-faint);
+  border: 1px solid rgba(14,116,144,0.2);
+  padding: 4px 10px;
+  white-space: nowrap;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.sec-num.dark-badge {
+  background: rgba(14,116,144,0.15);
+  border-color: rgba(34,211,238,0.2);
+  color: var(--teal-light);
+}
+
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.sec-title.light { color: #e2e8f0; }
+
+.sec-sub {
+  font-family: 'Crimson Pro', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.sec-sub.light { color: #64748b; }
+
+/* BODY TEXT */
+p {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #1e293b;
+  margin-bottom: 18px;
+  text-align: justify;
+  hyphens: auto;
+}
+
+p.lead {
+  font-size: 18px;
+  color: var(--ink);
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+p.light { color: #cbd5e1; }
+p.lead.light { color: #e2e8f0; }
+
+/* CALLOUT */
+.callout {
+  border-left: 3px solid var(--teal);
+  background: linear-gradient(135deg, #f0fdff, #ecfeff);
+  padding: 18px 22px;
+  margin: 24px 0;
+}
+
+.callout.gold {
+  border-left-color: var(--gold);
+  background: linear-gradient(135deg, #fffbeb, #fef9e7);
+}
+
+.callout.dark {
+  border-left-color: var(--teal-light);
+  background: rgba(14,116,144,0.1);
+}
+
+.callout p {
+  margin: 0;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--navy);
+  text-align: left;
+}
+
+.callout.dark p { color: #bae6fd; }
+.callout.gold p { color: var(--warm); }
+
+/* PILLARS */
+.pillar {
+  border: 1px solid #e2e8f0;
+  border-top: 3px solid var(--teal);
+  padding: 24px 26px;
+  margin: 24px 0;
+  background: #f8fafc;
+  position: relative;
+}
+
+.pillar::before {
+  content: attr(data-num);
+  position: absolute;
+  top: -1px;
+  right: 20px;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--teal);
+  background: var(--teal-faint);
+  border: 1px solid rgba(14,116,144,0.2);
+  border-top: none;
+  padding: 3px 8px;
+}
+
+.pillar-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.pillar p {
+  font-size: 15px;
+  margin-bottom: 12px;
+}
+
+.pillar p:last-child { margin-bottom: 0; }
+
+/* SUB LIST */
+.sub-list {
+  margin: 14px 0 14px 4px;
+}
+
+.sub-list li {
+  list-style: none;
+  padding: 8px 0 8px 24px;
+  position: relative;
+  font-size: 15.5px;
+  line-height: 1.7;
+  color: #1e293b;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.sub-list li:last-child { border-bottom: none; }
+
+.sub-list li::before {
+  content: '▸';
+  position: absolute;
+  left: 4px;
+  color: var(--teal);
+  font-size: 12px;
+  top: 10px;
+}
+
+.sub-list.light li { color: #cbd5e1; border-bottom-color: rgba(255,255,255,0.05); }
+.sub-list.light li::before { color: var(--teal-light); }
+
+/* STEP SEQUENCE */
+.steps {
+  counter-reset: step;
+  margin: 24px 0;
+}
+
+.step {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.step-num {
+  counter-increment: step;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--teal);
+  color: white;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.step-body {}
+
+.step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.step-title.light { color: #e2e8f0; }
+
+.step p {
+  font-size: 14.5px;
+  margin: 0;
+  color: #475569;
+}
+
+.step p.light { color: #94a3b8; }
+
+/* TWO COL */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.col-card {
+  border: 1px solid #e2e8f0;
+  padding: 20px;
+  background: #f8fafc;
+}
+
+.col-card.dark {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+}
+
+.col-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 2.5px;
+  color: var(--teal);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.col-card-title.gold { color: var(--gold-light); }
+
+.col-card p {
+  font-size: 14px;
+  margin: 0;
+  color: #334155;
+  text-align: left;
+}
+
+.col-card.dark p { color: #94a3b8; }
+
+/* DIVIDER */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 32px 0;
+}
+.div-line { flex: 1; height: 1px; background: var(--rule); }
+.div-line.light { background: rgba(255,255,255,0.08); }
+.div-diamond { width: 6px; height: 6px; background: var(--teal); transform: rotate(45deg); flex-shrink: 0; }
+.div-diamond.gold { background: var(--gold); }
+
+/* ADDRESS BLOCK */
+.address-block {
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+
+.address-line {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.address-line.to {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+/* SUBJECT */
+.subject-block {
+  background: var(--gold-faint);
+  border-left: 4px solid var(--gold);
+  padding: 16px 22px;
+  margin: 28px 0 32px;
+}
+
+.subject-label {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.subject-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--warm);
+  line-height: 1.4;
+}
+
+/* SAFEGUARD BOX */
+.safeguard {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-left: 4px solid #dc2626;
+  padding: 16px 20px;
+  margin: 12px 0;
+}
+
+.safeguard-title {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #dc2626;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.safeguard p {
+  font-size: 14.5px;
+  margin: 0;
+  color: #7f1d1d;
+  text-align: left;
+}
+
+/* WIN CARDS */
+.win-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.win-card {
+  padding: 20px 18px;
+  border-top: 3px solid;
+  background: rgba(255,255,255,0.04);
+}
+
+.win-card.tn { border-top-color: #dc2626; }
+.win-card.ka { border-top-color: #d97706; }
+.win-card.in { border-top-color: var(--teal-light); }
+
+.win-flag {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.win-card.tn .win-flag { color: #fca5a5; }
+.win-card.ka .win-flag { color: #fcd34d; }
+.win-card.in .win-flag { color: var(--teal-light); }
+
+.win-card ul { list-style: none; }
+.win-card ul li {
+  font-size: 13.5px;
+  color: #94a3b8;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  line-height: 1.5;
+}
+.win-card ul li:last-child { border-bottom: none; }
+
+/* SIGNATURE */
+.signature-block {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--rule);
+}
+
+.valediction {
+  font-style: italic;
+  font-size: 16px;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.sig-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.sig-detail {
+  font-size: 13.5px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.sig-detail span { display: block; }
+
+/* SUBMISSION NOTE */
+.submission-note {
+  background: #fffbeb;
+  border: 1px dashed var(--gold);
+  padding: 18px 22px;
+  margin-top: 36px;
+}
+
+.submission-note strong {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.submission-note p {
+  font-size: 13px;
+  color: #78350f;
+  margin: 0;
+  text-align: left;
+}
+
+/* FOOTER */
+.footer-bar {
+  display: flex;
+}
+.footer-teal { background: var(--teal); height: 6px; flex: 3; }
+.footer-gold { background: var(--gold); height: 6px; flex: 1; }
+.footer-navy { background: var(--midnight); height: 6px; flex: 2; }
+
+strong { font-weight: 600; color: var(--ink); }
+em { color: var(--teal); font-style: italic; }
+
+@media (max-width: 640px) {
+  :root { --M: 24px; }
+  .cover-top { flex-direction: column; gap: 16px; }
+  .cover-meta { text-align: left; }
+  .cover-title h1 { font-size: 22px; }
+  .two-col { grid-template-columns: 1fr; }
+  .win-grid { grid-template-columns: 1fr; }
+  .cover::after { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     COVER
+═══════════════════════════════════════════════ -->
+<div class="page">
+<div class="cover">
+  <div class="cover-top">
+    <div>
+      <div class="org-badge"><span class="org-badge-text">Viksit Bharat Policy Cell</span></div>
+      <div class="cover-org">
+        Registered on MY Bharat Portal<br>
+        Krishna District, Andhra Pradesh<br>
+        Submitted to: Office of the NTR District Collector
+      </div>
+    </div>
+    <div class="cover-meta">
+      <div><strong>Ref:</strong> VBPC/AP/2026/NTR-01</div>
+      <div><strong>Date:</strong> August 2026</div>
+      <div><strong>Class:</strong> Technical Policy Representation &amp; Implementation Roadmap</div>
+      <div><strong>Domain:</strong> Urban River Governance &amp; Public Health Accountability</div>
+      <div><strong>Status:</strong> For Collector's Action</div>
+    </div>
+  </div>
+
+  <div class="cover-title">
+    <span class="cover-title-label">Technical Policy Representation &amp; District Implementation Roadmap</span>
+    <h1>The Krishna Urban Discharge<br>Accountability Framework<br><em>(KUDAF) 2026</em></h1>
+    <div class="cover-subtitle">A complete, fully-funded technical roadmap to end untreated urban sewage discharge into the Krishna River — establishing real-time public accountability, ward-level community stewardship, and enforceable polluter-pays justice for downstream communities across the Krishna Delta</div>
+  </div>
+
+  <div class="teal-rule"></div>
+
+  <div class="cover-bottom">
+    <div class="cover-tag">
+      <span class="cover-tag-label">District</span>
+      <span class="cover-tag-value">NTR District, Andhra Pradesh</span>
+    </div>
+    <div class="cover-tag">
+      <span class="cover-tag-label">River Stretch</span>
+      <span class="cover-tag-value">Krishna — Vijayawada Urban Corridor</span>
+    </div>
+    <div class="cover-tag">
+      <span class="cover-tag-label">Core Proposals</span>
+      <span class="cover-tag-value">3 Funded, Legally-Backed Proposals</span>
+    </div>
+    <div class="cover-tag">
+      <span class="cover-tag-label">Downstream Impact Zone</span>
+      <span class="cover-tag-value">Repalle &amp; the Krishna Delta</span>
+    </div>
+    <div class="cover-tag">
+      <span class="cover-tag-label">Framework Type</span>
+      <span class="cover-tag-value">District-Level — Fully Actionable, No New Legislation Required</span>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION I — FORMAL SUBMISSION
+═══════════════════════════════════════════════ -->
+<div class="sheet">
+  <div class="address-block">
+    <div class="address-line to">The District Collector,</div>
+    <div class="address-line">NTR District, Andhra Pradesh, Collectorate,</div>
+    <div class="address-line">Vijayawada – 520 001.</div>
+  </div>
+
+  <div class="subject-block">
+    <span class="subject-label">Subject</span>
+    <div class="subject-text">A Technical Policy Representation for Ending Untreated Urban Sewage Discharge into the Krishna River — Establishing the Krishna Urban Discharge Accountability Framework (KUDAF) as a Fully-Funded, Enforceable District Action Plan</div>
+  </div>
+
+  <p style="font-style:italic; color:#475569; margin-bottom:28px;">Respected Sir/Madam,</p>
+
+  <p class="lead">The Viksit Bharat Policy Cell (VBPC), a student-led independent think tank registered on the Government of India's MY Bharat Portal (MBP74350027), respectfully submits this representation on the continuing discharge of untreated urban sewage and waste into the Krishna River within NTR District. This is not a submission of grievance alone — it is a complete, funded, and legally-anchored action plan that the District Administration can direct into implementation without new legislation, new budget sanction, or new institutional creation.</p>
+
+  <p>The Krishna is the fourth-largest river in India by water inflow, and it sustains agriculture, aquaculture, and drinking water for millions across the delta. Within Vijayawada, however, it has been progressively reduced to an urban drainage corridor — with documented, recurring, and preventable consequences borne entirely by downstream communities who had no role in creating the pollution.</p>
+
+  <div class="callout gold">
+    <p>"The failure at the Krishna's urban stretch is not a lack of law. It is a lack of monitoring, ownership, and consequence. KUDAF closes all three gaps — at zero net new cost to the district."</p>
+  </div>
+
+  <div class="sec-header" style="margin-top:36px;">
+    <span class="sec-num">SECTION I</span>
+    <div>
+      <div class="sec-title">The Documented Crisis — Evidence, Not Theory</div>
+      <div class="sec-sub">Five confirmed incidents, one common root cause</div>
+    </div>
+  </div>
+
+  <p>The incidents below are not hypothetical projections. They are recorded events with confirmed causation, each directly traceable to the failure of urban discharge management in and around Vijayawada.</p>
+
+  <ul class="sub-list">
+    <li><strong>July 2026 — Vijayawada Diarrhea Outbreak, Giriyapuram:</strong> A contaminated drain mixing with the municipal water supply — caused by unmonitored pipeline leaks — triggered a fecal coliform outbreak. Root cause: zero real-time monitoring of urban discharge points within the city.</li>
+    <li><strong>December 2020 — Eluru Water Mystery:</strong> 600 residents were hospitalised with acute neurological symptoms. Investigation confirmed chlorinated pesticides and heavy metals entering drinking water channels through unmonitored industrial and agricultural runoff — the same contamination pathway active along the Krishna's urban stretch today.</li>
+    <li><strong>2019–20 — Krishna Delta Aquaculture Crisis:</strong> Prawn farmers across the delta suffered massive financial losses, confirmed by water analysis showing critically reduced Dissolved Oxygen (DO) and elevated Biochemical Oxygen Demand (BOD), traced to cumulative urban discharge from upstream Vijayawada stretches.</li>
+    <li><strong>2022 — Comptroller and Auditor General Report:</strong> The CAG formally confirmed completely untreated sewage discharge into river systems in Andhra Pradesh, identifying the Vijayawada Municipal Corporation among the defaulting bodies.</li>
+    <li><strong>2021 — Non-Endemic Kidney Disease Cases:</strong> Groundwater contamination from unchecked percolation of heavy metals and urban runoff has been linked to kidney disease in communities adjacent to the river — communities with no alternative water source and no legal recourse.</li>
+  </ul>
+
+  <div class="callout">
+    <p>The pattern is consistent and fully documented: zero monitoring → unchecked discharge → downstream crisis → vulnerable communities bear the entire cost while polluting entities bear none. KUDAF is designed to break this chain at every link.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION II — THE STRUCTURAL DIAGNOSIS
+═══════════════════════════════════════════════ -->
+<div class="sheet dark">
+  <div class="sec-header">
+    <span class="sec-num dark-badge">SECTION II</span>
+    <div>
+      <div class="sec-title light">Why the Present System Keeps Failing</div>
+      <div class="sec-sub light">The structural diagnosis — not an administrative critique</div>
+    </div>
+  </div>
+
+  <p class="lead light">The Andhra Pradesh Pollution Control Board (APPCB) and the Vijayawada Municipal Corporation (VMC) currently conduct water quality testing only at canal inlets and the Prakasham Barrage. The resulting data remains on inaccessible government portals or physical office files. This is not a resourcing failure — it is a structural design failure that any district can correct without waiting on state or central action.</p>
+
+  <p class="light">Where there is no public dashboard, there is no public pressure. Where there is no public pressure, a municipal engineer can allow a broken sewage pipeline to run untreated for months without consequence. The July 2026 Giriyapuram outbreak is the direct, traceable outcome of this information blackout — not an isolated failure, but the predictable result of a system with zero real-time visibility and zero automatic escalation.</p>
+
+  <div class="callout dark">
+    <p>Every downstream crisis in the Krishna's urban stretch shares the same upstream cause: discharge that nobody was watching, reaching a community that had no way to know it was coming.</p>
+  </div>
+
+  <p class="light">Equally, VMC deploys a limited number of municipal sanitary inspectors with no continuous ground presence along the river's urban stretch. Local communities feel no personal ownership of the river adjacent to their own ward — with the direct consequence that the Budameru drain artificially floods during heavy rains due to unchecked garbage choking, and plastic dumping at the Prakasham Barrage gates continues with no preventive mechanism in place.</p>
+
+  <p class="light">Finally, VMC's institutional posture treats pollution as an issue that ends at the city boundary. It does not. Cumulative chemical pollution and fecal coliform travel downstream into the lower Krishna Delta — to Repalle and beyond — bio-accumulating in irrigation water and fish aquaculture. The 2019–20 aquaculture crisis caused massive losses to delta farmers who had no role in creating the pollution and no legal mechanism to recover their losses. This is the Polluter-Does-Not-Pay reality in operation today, and it is the specific failure that Section IV of this framework is engineered to close.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION III — THE THREE STRUCTURAL PILLARS
+═══════════════════════════════════════════════ -->
+<div class="sheet" style="background:#f8fafc;">
+  <div class="sec-header">
+    <span class="sec-num">SECTION III</span>
+    <div>
+      <div class="sec-title">KUDAF — Three Structural Pillars</div>
+      <div class="sec-sub">The complete architecture of the accountability framework</div>
+    </div>
+  </div>
+
+  <div class="pillar" data-num="PILLAR I">
+    <div class="pillar-title">The Public Accountability Dashboard — NTR District Water Portal</div>
+    <p><strong>Addresses:</strong> administrative opacity and the absence of public pressure on responsible officials.</p>
+    <p>A public, online Traffic Light Monitoring System — <strong style="color:#16a34a;">GREEN</strong> for water quality within safe parameters, <strong style="color:#ca8a04;">YELLOW</strong> for an early-warning breach that automatically triggers investigation, and <strong style="color:#dc2626;">RED</strong> for a danger-level breach that triggers a public alert and zonal officer notification.</p>
+    <p><strong>Key enforcement mechanism:</strong> if any monitored discharge point remains in RED status for more than seven consecutive days, the system automatically triggers a mandatory public explanation requirement from the responsible zonal officer. No explanation within 48 hours results in automatic escalation to the Collector's office — no manual discretion, no delay.</p>
+    <p><em>Working models:</em> the CPCB National Real-Time Water Quality Monitoring Dashboard (already operational nationally), the Bhubaneswar Smart City Saharanath Grievance and Monitoring System, and the Indore Municipal Accountability Portal — a documented factor in Indore's Swachh Survekshan ranking.</p>
+  </div>
+
+  <div class="pillar" data-num="PILLAR II">
+    <div class="pillar-title">Ward-Level River Mitras — Community Ownership Programme</div>
+    <p><strong>Addresses:</strong> the absence of ground-level accountability and community engagement along the river's urban stretch.</p>
+    <p>Trained community volunteers assigned to specific stretches of the Krishna and its urban drains, each responsible for: daily visual monitoring and photographic documentation of discharge points; real-time violation reporting through the NTR District Water Portal; flagging broken pipelines, illegal dumping, and drain blockages within 24 hours; and mobilising ward residents for monthly river-stretch maintenance coordination.</p>
+    <p><em>Working models:</em> Ganga Praharis under Namami Gange — community river guardians with defined responsibilities and government recognition, directly credited in river health outcomes — and Jal Mitras in Indore, ward-level water ambassadors directly credited in Swachh Survekshan national rankings.</p>
+  </div>
+
+  <div class="pillar" data-num="PILLAR III">
+    <div class="pillar-title">The Downstream Impact Charter — Automated Polluter-Pays Mechanism</div>
+    <p><strong>Addresses:</strong> the transboundary accountability gap between Vijayawada's discharge and the delta's suffering.</p>
+    <ul class="sub-list">
+      <li><strong>Boundary sensor deployment:</strong> real-time water-quality sensors at the NTR District exit boundary of the Krishna, measuring DO, BOD, and heavy metal levels, published publicly on the NTR Water Portal as the evidence basis for penalty triggers.</li>
+      <li><strong>Automated polluter-pays penalties:</strong> when boundary sensors confirm pollution beyond permissible limits, graded financial penalties are triggered automatically against identified upstream polluting entities — industrial or municipal, with no manual discretion and no delay.</li>
+      <li><strong>Downstream Gram Panchayat Fund:</strong> penalty funds are diverted directly to affected downstream rural Gram Panchayats, to construct and maintain multi-stage RO water purification plants and fund medical aid for communities suffering water-borne illness. Upstream Vijayawada pays for downstream harm — not the reverse.</li>
+    </ul>
+    <p><em>Legal backing:</em> <strong>MC Mehta vs Union of India (1987)</strong>, in which the Supreme Court established the Polluter Pays Principle as a fundamental doctrine of Indian environmental law, and the <strong>NGT 2021 Kanpur–Ganga Directives</strong>, which held that upstream discharge sources must compensate downstream affected communities — a precedent directly applicable to the Krishna basin.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION IV — LEGAL AND FUNDING FRAMEWORK
+═══════════════════════════════════════════════ -->
+<div class="sheet">
+  <div class="sec-header">
+    <span class="sec-num">SECTION IV</span>
+    <div>
+      <div class="sec-title">Legal Standing and Consolidated Funding Sources</div>
+      <div class="sec-sub">Every proposal below is legally anchored and centrally fundable — nothing requires new district budget</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-card">
+      <span class="col-card-title">LEGAL FRAMEWORK</span>
+      <p><strong>Water (Prevention and Control of Pollution) Act, 1974</strong> — primary statutory basis for sewage discharge regulation.<br><br>
+      <strong>Environment Protection Act, 1986</strong> — national framework for environmental standards enforcement.<br><br>
+      <strong>MC Mehta vs Union of India (1987)</strong> — Supreme Court: Polluter Pays Principle established.<br><br>
+      <strong>NGT 2021 Kanpur–Ganga Directives</strong> — upstream must compensate downstream; directly applicable to the Krishna basin.</p>
+    </div>
+    <div class="col-card">
+      <span class="col-card-title">CONSOLIDATED FUNDING SOURCES</span>
+      <p><strong>AMRUT 2.0</strong> (MoHUA) — smart water management, portal infrastructure.<br><br>
+      <strong>National River Conservation Plan</strong> (MoJS) — sensors, monitoring systems, conservation works.<br><br>
+      <strong>National Youth Corps</strong> (MoYAS / NYKS) — River Mitra volunteer deployment.<br><br>
+      <strong>Swachh Bharat Mission 2.0</strong> (MoHUA) — IEC and community engagement activities.<br><br>
+      <strong>15th Finance Commission</strong> (MoF → VMC) — urban local body infrastructure grants.<br><br>
+      <strong>National Clean River Programme</strong> (MoJS) — district-level matching funds.</p>
+    </div>
+  </div>
+
+  <p>Every rupee this framework requires already exists inside a sanctioned central scheme. The District Administration's role is coordination and direction — not new expenditure. This is precisely what makes KUDAF actionable within the current financial year.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION V — SAFEGUARDS
+═══════════════════════════════════════════════ -->
+<div class="sheet dark">
+  <div class="sec-header">
+    <span class="sec-num dark-badge">SECTION V</span>
+    <div>
+      <div class="sec-title light">Safeguards — Why This Framework Cannot Stall</div>
+      <div class="sec-sub light">Pre-empting the two failure modes of every prior representation on this subject</div>
+    </div>
+  </div>
+
+  <p class="light">Representations on river pollution typically fail for one of two reasons: either they are acknowledged but never assigned to a specific officer with a specific deadline, or they require new funding that never materialises. KUDAF is structured to close both gaps directly.</p>
+
+  <div class="safeguard">
+    <span class="safeguard-title">SAFEGUARD 1 — NO NEW BUDGET SANCTION REQUIRED</span>
+    <p>Every component of KUDAF is funded through existing, already-sanctioned central schemes (Section IV). The District Administration is not being asked to allocate new money — only to direct coordination between APPCB, VMC, NYKS, and the relevant central ministries.</p>
+  </div>
+
+  <div class="safeguard">
+    <span class="safeguard-title">SAFEGUARD 2 — AUTOMATIC ESCALATION, NOT DISCRETIONARY REVIEW</span>
+    <p>Both the RED-status escalation (Pillar I) and the polluter-pays trigger (Pillar III) are designed to activate automatically on breach of a defined threshold — removing the discretionary delay that has allowed prior violations to persist unaddressed for months.</p>
+  </div>
+
+  <div class="safeguard">
+    <span class="safeguard-title">SAFEGUARD 3 — PUBLIC DATA AS THE ACCOUNTABILITY MECHANISM</span>
+    <p>All monitoring data is published on the public-facing NTR District Water Portal in real time. Implementation fatigue — the greatest long-term risk to any administrative reform — is prevented by making official silence itself a visible, publicly-recorded accountability failure.</p>
+  </div>
+
+  <div class="safeguard">
+    <span class="safeguard-title">SAFEGUARD 4 — FULL CONSISTENCY WITH EXISTING LAW</span>
+    <p>KUDAF does not seek any new legislation, ordinance, or judicial order. It operationalises enforcement already available under the Water Act 1974, the Environment Protection Act 1986, and binding Supreme Court and NGT precedent — converting existing law into a working, monitored, district-level system.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION VI — IMPLEMENTATION ROADMAP
+═══════════════════════════════════════════════ -->
+<div class="sheet" style="background:#f8fafc;">
+  <div class="sec-header">
+    <span class="sec-num">SECTION VI</span>
+    <div>
+      <div class="sec-title">Implementation Roadmap — From Direction to Operation</div>
+      <div class="sec-sub">Five specific, sequenced actions for the District Administration</div>
+    </div>
+  </div>
+
+  <p class="lead">We respectfully request the District Collector to direct the following specific actions for examination and implementation. Each is sequenced to build on the one before it, so that the framework becomes operational within a single administrative cycle.</p>
+
+  <div class="steps">
+
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">Direct a Joint VMC–APPCB Feasibility Study on the Water Portal</div>
+        <p>Direct VMC and APPCB to jointly examine the feasibility of establishing the Online NTR District Water Portal with the Traffic Light Monitoring System described under Pillar I.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">Launch the River Mitra Pilot in Two Riverside Wards</div>
+        <p>Coordinate with NYKS and MoYAS to initiate a Ward-Level River Mitra pilot programme in two riverside wards within NTR District, using the National Youth Corps deployment channel already available.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Open Boundary-Sensor Consultation with APPCB</div>
+        <p>Initiate consultation with the State Pollution Control Board (APPCB) on boundary sensor deployment at the district exit point of the Krishna River, as the technical foundation for the Downstream Impact Charter under Pillar III.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Commission the Three-Point BOD/DO Baseline Audit</div>
+        <p>Commission a BOD/DO testing audit at three downstream points — the Vijayawada exit, the Repalle entry, and the Krishna Delta boundary — to establish the scientific baseline required for the penalty mechanism.</p>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Request Formal NRCP Coverage from the Ministry of Jal Shakti</div>
+        <p>Formally request the Ministry of Jal Shakti to bring the Vijayawada urban stretch of the Krishna under the National River Conservation Plan, securing sustained central funding and monitoring beyond the pilot phase.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider">
+    <div class="div-line"></div>
+    <div class="div-diamond gold"></div>
+    <div class="div-line"></div>
+  </div>
+
+  <p style="font-size:14px; font-style:italic; color:#64748b;">Seven further administrative measures — canal modernisation, stricter sand mining enforcement, planned riverbank urbanisation, and curriculum-integrated civic awareness among them — are detailed in Annexure A and fall entirely within existing administrative and legislative frameworks.</p>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION VII — WHO GAINS
+═══════════════════════════════════════════════ -->
+<div class="sheet dark" style="background:#0a1628;">
+  <div class="sec-header">
+    <span class="sec-num dark-badge">SECTION VII</span>
+    <div>
+      <div class="sec-title light">Vijayawada and the Krishna Delta — Gaining Together</div>
+      <div class="sec-sub light">Not the city alone. Not the delta alone. One river, one accountable system.</div>
+    </div>
+  </div>
+
+  <div class="win-grid">
+    <div class="win-card tn">
+      <span class="win-flag">NTR DISTRICT GAINS</span>
+      <ul>
+        <li>A public dashboard that ends the current information blackout</li>
+        <li>Automatic escalation — no discretionary delay on violations</li>
+        <li>Ward-level ownership through the River Mitra network</li>
+        <li>Access to already-sanctioned central funding, at zero new budget cost</li>
+        <li>A documented, replicable model for Swachh Survekshan-style recognition</li>
+      </ul>
+    </div>
+    <div class="win-card ka">
+      <span class="win-flag">KRISHNA DELTA GAINS</span>
+      <ul>
+        <li>Boundary sensors giving downstream communities their first real-time evidence base</li>
+        <li>Automated polluter-pays penalties, with no manual discretion</li>
+        <li>A dedicated Gram Panchayat Fund for RO plants and medical aid</li>
+        <li>Legal standing under the Polluter Pays Principle finally made operational</li>
+        <li>Protection for the aquaculture livelihoods lost in 2019–20</li>
+      </ul>
+    </div>
+    <div class="win-card in">
+      <span class="win-flag">ANDHRA PRADESH GAINS</span>
+      <ul>
+        <li>A working district-level model for the state's other urban river stretches</li>
+        <li>Direct compliance with the 2022 CAG findings on untreated discharge</li>
+        <li>Reduced public health burden — fewer outbreaks like Giriyapuram and Eluru</li>
+        <li>Demonstrated administrative capacity ahead of central scheme reviews</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout dark" style="margin-top:28px;">
+    <p>Every component of this framework is already funded, already legal, and already precedented elsewhere in India. The only missing input has been district-level direction. This submission asks for exactly that — nothing more.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     SECTION VIII — LONG-RUN SUSTAINABILITY
+═══════════════════════════════════════════════ -->
+<div class="sheet">
+  <div class="sec-header">
+    <span class="sec-num">SECTION VIII</span>
+    <div>
+      <div class="sec-title">Long-Run Sustainability — Annexure A</div>
+      <div class="sec-sub">Seven supporting administrative actions within existing frameworks</div>
+    </div>
+  </div>
+
+  <p>The following measures complement the three core pillars and require no new legislation:</p>
+
+  <ul class="sub-list">
+    <li><strong>Canal modernisation:</strong> upgradation of existing canal infrastructure to reduce seepage, contamination, and unauthorised discharge points, prioritising canals running through residential zones.</li>
+    <li><strong>Stricter sand mining regulation:</strong> enforcement of existing mining laws along the Krishna riverbed, where illegal and excessive sand mining is destroying riverbed ecology and groundwater recharge capacity.</li>
+    <li><strong>Planned urbanisation along riverbanks:</strong> ensuring future urban expansion follows environmentally compliant development norms, given that Vijayawada's growth into Krishna floodplains directly contributes to flood severity and discharge volumes.</li>
+    <li><strong>Education and civic awareness integration:</strong> integrating river conservation awareness into school and college curriculum across NTR District, building civic responsibility for river hygiene at ward level.</li>
+    <li><strong>Strict implementation of existing law:</strong> rigorous enforcement of the Water Act 1974 and Environment Protection Act 1986 without exception, beginning with VMC's own infrastructure as the largest single contributor to discharge.</li>
+  </ul>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     CLOSING
+═══════════════════════════════════════════════ -->
+<div class="sheet">
+  <div class="sec-header">
+    <span class="sec-num">CONCLUSION</span>
+    <div>
+      <div class="sec-title">A District-Level Fix, Not a Distant Promise</div>
+    </div>
+  </div>
+
+  <p class="lead">The Krishna's urban stretch does not need a new law, a new ministry, or a new budget line. It needs a district administration willing to direct the coordination that already-sanctioned schemes require, and a monitoring system that makes silence impossible. Every outbreak documented in Section I was preventable with the systems this framework proposes.</p>
+
+  <p>The Viksit Bharat Policy Cell is available for any further discussion, presentation, or consultation at the Collectorate's convenience, and would welcome the opportunity to present these proposals in detail to VMC, APPCB, and the relevant district departments.</p>
+
+  <div class="callout gold">
+    <p>"Zero monitoring produced Giriyapuram, Eluru, and the delta's lost aquaculture. Real-time monitoring, community ownership, and automated polluter-pays enforcement can ensure they are the last such incidents on the Krishna's urban stretch."</p>
+  </div>
+
+  <div class="signature-block">
+    <div class="valediction">Thanking you, yours faithfully,</div>
+    <div class="sig-name">Viksit Bharat Policy Cell (VBPC)</div>
+    <div class="sig-detail">
+      <span>Registered on the MY Bharat Portal — MBP74350027</span>
+      <span>Krishna District, Andhra Pradesh</span>
+      <span>Email: viksitbharatpolicycell@gmail.com</span>
+      <span>Website: vbpc.in</span>
+      <span>Ref: VBPC/AP/2026/NTR-01 &nbsp;|&nbsp; Date: August 2026</span>
+    </div>
+  </div>
+
+  <div class="submission-note">
+    <strong>Note on Submission</strong>
+    <p>This representation is submitted in the public interest for the consideration of the competent authority. It consolidates and supersedes the interim supplementary submission (Ref: VBPC/AP/2026/NTR-01-R) previously filed with the District Magistrate, NTR District, on this subject.</p>
+  </div>
+</div>
+
+<div class="footer-bar">
+  <div class="footer-teal"></div>
+  <div class="footer-gold"></div>
+  <div class="footer-navy"></div>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
