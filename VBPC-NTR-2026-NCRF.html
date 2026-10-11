@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NTR District Climate Resilience Framework — Technical Policy Representation | VBPC</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600;700&display=swap');
+
+:root {
+  --midnight: #0d1117;
+  --deep-navy: #111827;
+  --navy: #1e2d40;
+  --teal: #0e7490;
+  --teal-light: #22d3ee;
+  --teal-faint: #ecfeff;
+  --gold: #d97706;
+  --gold-light: #fbbf24;
+  --gold-faint: #fffbeb;
+  --ivory: #fefce8;
+  --cream: #fffdf7;
+  --warm: #92400e;
+  --ink: #0f172a;
+  --muted: #475569;
+  --rule: #cbd5e1;
+  --M: 64px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: linear-gradient(135deg, #0d1117 0%, #1a2744 50%, #0d2137 100%);
+  min-height: 100vh;
+  padding: 48px 20px;
+  font-family: 'Crimson Pro', Georgia, serif;
+}
+
+.page { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+
+.cover {
+  background: var(--deep-navy);
+  border: 1px solid rgba(14,116,144,0.3);
+  border-top: 5px solid var(--teal);
+  margin-bottom: 3px;
+  padding: 52px var(--M) 44px;
+  position: relative;
+  overflow: hidden;
+}
+.cover::after {
+  content: 'వాతావరణం';
+  position: absolute; right: -20px; top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  font-family: 'Playfair Display', serif;
+  font-size: 100px; color: rgba(14,116,144,0.05); font-weight: 800;
+  letter-spacing: 8px; pointer-events: none; white-space: nowrap;
+}
+.cover-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 36px; }
+.org-badge { display: inline-block; border: 1px solid rgba(34,211,238,0.3); padding: 4px 12px; margin-bottom: 12px; }
+.org-badge-text { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--teal-light); text-transform: uppercase; }
+.cover-org { font-family: 'Playfair Display', serif; font-size: 13px; color: #94a3b8; line-height: 1.6; max-width: 380px; }
+.cover-meta { text-align: right; font-size: 12px; color: #64748b; line-height: 1.9; }
+.cover-meta strong { color: var(--teal-light); font-weight: 500; }
+.cover-title-label { font-family: 'Cinzel', serif; font-size: 9.5px; letter-spacing: 4px; color: var(--gold-light); margin-bottom: 14px; display: block; }
+.cover-title h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #f1f5f9; line-height: 1.25; max-width: 680px; }
+.cover-title h1 em { color: var(--teal-light); font-style: normal; }
+.cover-subtitle { font-family: 'Crimson Pro', serif; font-size: 15.5px; color: #94a3b8; font-style: italic; margin-top: 10px; max-width: 620px; line-height: 1.5; }
+.teal-rule { height: 1px; background: linear-gradient(90deg, var(--teal), rgba(14,116,144,0.1)); margin: 24px 0; }
+.cover-bottom { display: flex; gap: 40px; flex-wrap: wrap; }
+.cover-tag { display: flex; flex-direction: column; gap: 3px; }
+.cover-tag-label { font-family: 'Cinzel', serif; font-size: 8px; letter-spacing: 2px; color: #475569; text-transform: uppercase; }
+.cover-tag-value { font-size: 13px; color: #94a3b8; }
+
+.sheet { background: var(--cream); margin-bottom: 3px; padding: 52px var(--M) 56px; position: relative; }
+.sheet.dark { background: var(--navy); }
+
+.sec-header { display: flex; align-items: flex-start; gap: 20px; margin-bottom: 32px; padding-bottom: 20px; border-bottom: 1px solid var(--rule); }
+.sec-num { font-family: 'Cinzel', serif; font-size: 10px; letter-spacing: 3px; color: var(--teal); background: var(--teal-faint); border: 1px solid rgba(14,116,144,0.2); padding: 4px 10px; white-space: nowrap; margin-top: 6px; flex-shrink: 0; }
+.sec-num.dark-badge { background: rgba(14,116,144,0.15); border-color: rgba(34,211,238,0.2); color: var(--teal-light); }
+.sec-title { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; color: var(--ink); line-height: 1.25; }
+.sec-title.light { color: #e2e8f0; }
+.sec-sub { font-family: 'Crimson Pro', serif; font-size: 14px; font-style: italic; color: var(--muted); margin-top: 4px; }
+.sec-sub.light { color: #64748b; }
+
+p { font-size: 16px; line-height: 1.85; color: #1e293b; margin-bottom: 18px; text-align: justify; hyphens: auto; }
+p.lead { font-size: 18px; color: var(--ink); font-weight: 500; line-height: 1.8; }
+p.light { color: #cbd5e1; }
+p.lead.light { color: #e2e8f0; }
+
+.callout { border-left: 3px solid var(--teal); background: linear-gradient(135deg, #f0fdff, #ecfeff); padding: 18px 22px; margin: 24px 0; }
+.callout.gold { border-left-color: var(--gold); background: linear-gradient(135deg, #fffbeb, #fef9e7); }
+.callout.dark { border-left-color: var(--teal-light); background: rgba(14,116,144,0.1); }
+.callout p { margin: 0; font-style: italic; font-size: 17px; color: var(--navy); text-align: left; }
+.callout.dark p { color: #bae6fd; }
+.callout.gold p { color: var(--warm); }
+
+.pillar { border: 1px solid #e2e8f0; border-top: 3px solid var(--teal); padding: 24px 26px; margin: 24px 0; background: #f8fafc; position: relative; }
+.pillar::before { content: attr(data-num); position: absolute; top: -1px; right: 20px; font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: var(--teal); background: var(--teal-faint); border: 1px solid rgba(14,116,144,0.2); border-top: none; padding: 3px 8px; }
+.pillar-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 12px; }
+.pillar p { font-size: 15px; margin-bottom: 12px; }
+.pillar p:last-child { margin-bottom: 0; }
+
+.sub-list { margin: 14px 0 14px 4px; }
+.sub-list li { list-style: none; padding: 8px 0 8px 24px; position: relative; font-size: 15.5px; line-height: 1.7; color: #1e293b; border-bottom: 1px solid #f1f5f9; }
+.sub-list li:last-child { border-bottom: none; }
+.sub-list li::before { content: '▸'; position: absolute; left: 4px; color: var(--teal); font-size: 12px; top: 10px; }
+
+.steps { counter-reset: step; margin: 24px 0; }
+.step { display: flex; gap: 20px; margin-bottom: 20px; align-items: flex-start; }
+.step-num { counter-increment: step; width: 36px; height: 36px; border-radius: 50%; background: var(--teal); color: white; font-family: 'Cinzel', serif; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.step-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.step p { font-size: 14.5px; margin: 0; color: #475569; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 24px 0; }
+.col-card { border: 1px solid #e2e8f0; padding: 20px; background: #f8fafc; }
+.col-card-title { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2.5px; color: var(--teal); margin-bottom: 10px; display: block; }
+.col-card p { font-size: 14px; margin: 0; color: #334155; text-align: left; }
+
+.address-block { background: #f0f9ff; border: 1px solid #bae6fd; padding: 20px 24px; margin-bottom: 28px; }
+.address-line { font-size: 14.5px; color: var(--muted); line-height: 1.8; }
+.address-line.to { font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+
+.subject-block { background: var(--gold-faint); border-left: 4px solid var(--gold); padding: 16px 22px; margin: 28px 0 32px; }
+.subject-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 3px; color: var(--gold); margin-bottom: 6px; display: block; }
+.subject-text { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 600; color: var(--warm); line-height: 1.4; }
+
+.safeguard { background: #fef2f2; border: 1px solid #fecaca; border-left: 4px solid #dc2626; padding: 16px 20px; margin: 12px 0; }
+.safeguard-title { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: #dc2626; margin-bottom: 6px; display: block; }
+.safeguard p { font-size: 14.5px; margin: 0; color: #7f1d1d; text-align: left; }
+
+.win-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 24px 0; }
+.win-card { padding: 20px 18px; border-top: 3px solid; background: rgba(255,255,255,0.04); }
+.win-card.tn { border-top-color: #dc2626; }
+.win-card.ka { border-top-color: #d97706; }
+.win-card.in { border-top-color: var(--teal-light); }
+.win-flag { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+.win-card.tn .win-flag { color: #fca5a5; }
+.win-card.ka .win-flag { color: #fcd34d; }
+.win-card.in .win-flag { color: var(--teal-light); }
+.win-card ul { list-style: none; }
+.win-card ul li { font-size: 13.5px; color: #94a3b8; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.05); line-height: 1.5; }
+.win-card ul li:last-child { border-bottom: none; }
+
+.signature-block { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.valediction { font-style: italic; font-size: 16px; color: var(--muted); margin-bottom: 28px; }
+.sig-name { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.sig-detail { font-size: 13.5px; color: var(--muted); line-height: 1.8; }
+.sig-detail span { display: block; }
+
+.submission-note { background: #fffbeb; border: 1px dashed var(--gold); padding: 18px 22px; margin-top: 36px; }
+.submission-note strong { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; color: var(--gold); display: block; margin-bottom: 8px; }
+.submission-note p { font-size: 13px; color: #78350f; margin: 0; text-align: left; }
+
+.footer-bar { display: flex; }
+.footer-teal { background: var(--teal); height: 6px; flex: 3; }
+.footer-gold { background: var(--gold); height: 6px; flex: 1; }
+.footer-navy { background: var(--midnight); height: 6px; flex: 2; }
+
+strong { font-weight: 600; color: var(--ink); }
+em { color: var(--teal); font-style: italic; }
+
+@media (max-width: 640px) {
+  :root { --M: 24px; }
+  .cover-top { flex-direction: column; gap: 16px; }
+  .cover-meta { text-align: left; }
+  .cover-title h1 { font-size: 22px; }
+  .two-col { grid-template-columns: 1fr; }
+  .win-grid { grid-template-columns: 1fr; }
+  .cover::after { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+<div class="cover">
+  <div class="cover-top">
+    <div>
+      <div class="org-badge"><span class="org-badge-text">Viksit Bharat Policy Cell</span></div>
+      <div class="cover-org">
+        Registered on MY Bharat Portal<br>
+        Krishna District, Andhra Pradesh<br>
+        Submitted to: NTR District Collectorate, AP Water Resources Department &amp; APSDMA
+      </div>
+    </div>
+    <div class="cover-meta">
+      <div><strong>Ref:</strong> VBPC/AP/2026/NTR-02</div>
+      <div><strong>Date:</strong> September 2026</div>
+      <div><strong>Class:</strong> Technical Policy Representation &amp; Implementation Roadmap</div>
+      <div><strong>Domain:</strong> Anticipatory Disaster Governance &amp; Public Health Preparedness</div>
+      <div><strong>Status:</strong> For Collector's, WRD's &amp; APSDMA's Action</div>
+    </div>
+  </div>
+
+  <div class="cover-title">
+    <span class="cover-title-label">Technical Policy Representation &amp; District Implementation Roadmap</span>
+    <h1>NTR District Climate<br>Resilience Framework<br><em>(NCRF) 2026</em></h1>
+    <div class="cover-subtitle">Extreme Weather as the New Normal — a complementary, fully-funded anticipatory-governance layer for NTR District, closing the early-warning, health-preparedness, governance, and equity gaps that sit alongside the district's ongoing Budameru engineering works</div>
+  </div>
+
+  <div class="teal-rule"></div>
+
+  <div class="cover-bottom">
+    <div class="cover-tag"><span class="cover-tag-label">District</span><span class="cover-tag-value">NTR District, Andhra Pradesh</span></div>
+    <div class="cover-tag"><span class="cover-tag-label">Anchor Case</span><span class="cover-tag-value">September 2024 Budameru Floods</span></div>
+    <div class="cover-tag"><span class="cover-tag-label">Core Proposals</span><span class="cover-tag-value">5 Funded, Legally-Backed Pillars</span></div>
+    <div class="cover-tag"><span class="cover-tag-label">Complements</span><span class="cover-tag-value">Ongoing Budameru Modernisation Programme</span></div>
+    <div class="cover-tag"><span class="cover-tag-label">Framework Type</span><span class="cover-tag-value">District-Level — No New Legislation Required</span></div>
+  </div>
+</div>
+
+<!-- SECTION I -->
+<div class="sheet">
+  <div class="address-block">
+    <div class="address-line to">The District Collector,</div>
+    <div class="address-line">NTR District, Andhra Pradesh, Collectorate,</div>
+    <div class="address-line">Vijayawada – 520 001.</div>
+    <div class="address-line" style="margin-top:8px;">Copy to: The Water Resources Department, Government of Andhra Pradesh; The Andhra Pradesh State Disaster Management Authority (APSDMA).</div>
+  </div>
+
+  <div class="subject-block">
+    <span class="subject-label">Subject</span>
+    <div class="subject-text">A Technical Policy Representation to Add Early-Warning, Health-Preparedness, Governance and Equity Safeguards to NTR District's Extreme Weather Response — the NTR District Climate Resilience Framework (NCRF)</div>
+  </div>
+
+  <p style="font-style:italic; color:#475569; margin-bottom:28px;">Respected Sir/Madam,</p>
+
+  <p class="lead">The Viksit Bharat Policy Cell (VBPC), a student-led independent think tank registered on the Government of India's MY Bharat Portal (MBP74350027), respectfully submits this representation on anticipatory governance for extreme weather in NTR District. This is not a critique of the District Administration's ongoing flood-control works — it is a proposal to add the early-warning, health, governance, and equity layers that sit alongside them, at zero new budget cost and without any new legislation.</p>
+
+  <p>NTR District has, within the last two years, experienced both a catastrophic flood event and a severe coastal heatwave. Both were met with a strong engineering and relief response. Neither was met with a standing early-warning system, a documented Heat Action Plan, or an institutional structure that treats extreme weather as routine governance rather than an occasional disaster file. This submission addresses that specific, remaining gap.</p>
+
+  <div class="callout gold">
+    <p>"The engineering works underway on the Budameru will reduce how much water reaches the city. They cannot, by themselves, warn a resident three hours before it arrives, keep a primary health centre running through a grid failure, or ensure a daily-wage labourer is not the last to be told to stop working in 47°C heat."</p>
+  </div>
+
+  <div class="sec-header" style="margin-top:36px;">
+    <span class="sec-num">SECTION I</span>
+    <div>
+      <div class="sec-title">The Documented Record — Evidence, Not Theory</div>
+      <div class="sec-sub">Two confirmed events, one common gap</div>
+    </div>
+  </div>
+
+  <ul class="sub-list">
+    <li><strong>31 August – 9 September 2024 — The Budameru Floods:</strong> Record rainfall overwhelmed the Budameru Rivulet and the Krishna, killing at least 35 people and directly affecting roughly 270,000 residents of Vijayawada within a total of over 645,000 affected across the region. The Prakasam Barrage recorded the highest inflows in its 70-year history. The Government of India constituted an Inter-Ministerial Central Team to assess the damage, and the State disbursed substantial SDRF relief to over 4 lakh affected people.</li>
+    <li><strong>2023 — Coastal Andhra Heatwave:</strong> Temperatures crossing 45°C caused heat-stroke casualties concentrated among outdoor wage labourers, construction workers, and street vendors, with no shaded shelters or mandated work-hour restrictions in place at the time.</li>
+    <li><strong>October 2024 – Present — The Engineering Response:</strong> The Chief Minister ordered a Detailed Project Report on Budameru modernisation; a ₹10,000 crore modernisation fund was called for in September 2025; and embankment, tunnel-capacity, and diversion-canal works remain under active construction. This response is comprehensive on infrastructure — and silent on early warning, health-system readiness, governance reform, and equity in who is protected first.</li>
+    <li><strong>September 2025 — The Accountability Gap Surfaces:</strong> One year after the floods, opposition leaders publicly noted that compensation to affected families remained incomplete and that no permanent early-warning or preparedness system had been put in place for the next monsoon.</li>
+  </ul>
+
+  <div class="callout">
+    <p>The pattern is consistent: the district responds decisively to disasters already underway, and is investing seriously in reducing their physical scale. What remains unbuilt is the layer that determines how much warning, medical readiness, and protection reach people before and during the next one. NCRF is designed to build exactly that layer.</p>
+  </div>
+</div>
+
+<!-- SECTION II -->
+<div class="sheet dark">
+  <div class="sec-header">
+    <span class="sec-num dark-badge">SECTION II</span>
+    <div>
+      <div class="sec-title light">Why Engineering Alone Leaves a Gap</div>
+      <div class="sec-sub light">The structural diagnosis — not an administrative critique</div>
+    </div>
+  </div>
+
+  <p class="lead light">The Budameru modernisation programme — tunnel-capacity expansion, embankment works, diversion-canal lining — is a genuine and well-funded response to how much water can reach the city. It says nothing about how much warning a resident receives, whether the nearest primary health centre has power when the grid fails, which department owns the next decade of adaptation, or which neighbourhood is protected first when resources are limited.</p>
+
+  <p class="light">This is not a resourcing failure — every element proposed in this framework already exists as a funded central scheme, an NDMA-recognised model elsewhere in India, or a power the District Collector already holds under the Disaster Management Act, 2005. What is missing is the district-level decision to assemble them into one operating system before the next monsoon or the next heatwave, rather than after.</p>
+
+  <div class="callout dark">
+    <p>Every hour between a rainfall alert and a resident's phone, and every hour a primary health centre runs without backup power, is currently governed by no standing protocol at all.</p>
+  </div>
+</div>
+
+<!-- SECTION III -->
+<div class="sheet" style="background:#f8fafc;">
+  <div class="sec-header">
+    <span class="sec-num">SECTION III</span>
+    <div>
+      <div class="sec-title">NCRF — Five Structural Pillars</div>
+      <div class="sec-sub">The complete architecture of the resilience framework</div>
+    </div>
+  </div>
+
+  <div class="pillar" data-num="PILLAR I">
+    <div class="pillar-title">Last-Mile Early Warning Architecture</div>
+    <p><strong>Addresses:</strong> the absence of a standing, hyperlocal alert system reaching residents before, not during, an event.</p>
+    <ul class="sub-list">
+      <li>Integrate ISRO's INSAT constellation and IMD's Doppler Weather Radar network with NDMA's SACHET common alerting platform to issue geo-targeted, multi-lingual (Telugu-first) alerts directly to residents' phones across all NTR District revenue divisions.</li>
+      <li>Deploy physical sirens and voice-call alert networks in the specific wards along the Budameru's historically breach-prone stretches, closing the last-mile gap for residents without smartphones.</li>
+      <li>Commission GIS-based hyperlocal flood-risk contour mapping at the ward level — the same approach adopted in Chennai following its 2015 floods.</li>
+    </ul>
+  </div>
+
+  <div class="pillar" data-num="PILLAR II">
+    <div class="pillar-title">Climate-Resilient Health Preparedness</div>
+    <p><strong>Addresses:</strong> the absence of a documented Heat Action Plan and post-flood disease surveillance system for NTR District.</p>
+    <ul class="sub-list">
+      <li>Adopt a formal NTR District Heat Action Plan, modelled on Ahmedabad's — India's first city-level heat warning system — including shaded cooling centres, mandated hydration points, and local-language heat alerts at markets and transit hubs.</li>
+      <li>Mandate that all District Hospitals, CHCs, and PHCs in flood- and heat-exposed zones maintain solar backup power, elevated pharmaceutical storage, and water-purification redundancy, aligned with the National Programme on Climate Change and Human Health (NPCCHH).</li>
+      <li>Establish continuous surveillance for post-flood water-borne disease and heat-related illness, coordinated with the National Centre for Disease Control.</li>
+    </ul>
+  </div>
+
+  <div class="pillar" data-num="PILLAR III">
+    <div class="pillar-title">Equity-Based Vulnerability Budgeting &amp; Legal Liability</div>
+    <p><strong>Addresses:</strong> the absence of a defined basis for prioritising relief and enforcing accountability for preventable flood damage.</p>
+    <ul class="sub-list">
+      <li>Adopt a District Climate Vulnerability Index (DCVI), mapping the socio-ecological exposure of all NTR District wards and mandals, to guide — rather than an arbitrary fixed quota — the prioritisation of mitigation spending toward the most exposed informal settlements and hill slopes.</li>
+      <li>Introduce a Seasonal Thermal Safety Protocol under Sections 30 and 34 of the Disaster Management Act, 2005, and Section 163 of the Bharatiya Nagarik Suraksha Sanhita, 2023, restricting hazardous outdoor labour between 12:00 PM and 4:00 PM on IMD-declared Red/Orange heat alert days.</li>
+      <li>Amend PWD and municipal Standard Bidding Documents to introduce a defined Contractual Resilience Baseline, so that infrastructure failing within an engineered 25- or 50-year hydrological return period cannot claim force majeure under Section 56 of the Indian Contract Act, 1872.</li>
+    </ul>
+  </div>
+
+  <div class="pillar" data-num="PILLAR IV">
+    <div class="pillar-title">Governance &amp; Institutional Reform</div>
+    <p><strong>Addresses:</strong> the absence of a standing institutional structure that treats extreme weather as routine governance rather than an occasional disaster file.</p>
+    <ul class="sub-list">
+      <li>Formally adopt the shift from Relief to Preparedness to Prevention to Resilience as the district's operating model, moving beyond post-disaster compensation toward pre-event drainage management, floodplain enforcement, and early warning.</li>
+      <li>Strengthen cooperative federalism with clearly divided responsibilities: the Centre supplies national policy, finance, and scientific data; the State shapes region-specific adaptation rules; NTR District's ULBs and Gram Panchayats — closest to residents — hold implementation authority and micro-contingency funds.</li>
+      <li>Fold climate adaptation out of the Environment Department's silo and into urban planning, transport, housing, water management, and public health policy, under the National Mission on Sustainable Habitat.</li>
+      <li>Provide ULBs and Panchayats the technical capacity, climate finance access, and staff training they currently lack.</li>
+      <li>Introduce measurable targets, regular audits, and a public dashboard for every commitment in this framework, so implementation can be tracked rather than assumed.</li>
+      <li>Expand GIS, satellite monitoring, local weather stations, and ward-level risk mapping to close the insufficient-data gap at the local level.</li>
+      <li>Adopt climate-resilient design standards for roads, bridges, buildings, drainage, and electricity infrastructure, rather than repairing each to its pre-disaster specification after every event.</li>
+    </ul>
+  </div>
+
+  <div class="pillar" data-num="PILLAR V">
+    <div class="pillar-title">Resilience Financing &amp; Livelihood Protection</div>
+    <p><strong>Addresses:</strong> the financial exposure of low-income households, tenant farmers, and small traders left uninsured against recurring extreme weather.</p>
+    <ul class="sub-list">
+      <li>Expand insurance penetration to protect MSMEs, street vendors, and tenant farmers from catastrophic asset loss, mobilising urban green bonds and CSR sustainability finance alongside existing schemes.</li>
+      <li>Integrate dynamic MGNREGS work-hour adjustment during heatwaves and universal ration portability during localised flooding into existing livelihood programmes, requiring no new scheme creation.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- SECTION IV -->
+<div class="sheet">
+  <div class="sec-header">
+    <span class="sec-num">SECTION IV</span>
+    <div>
+      <div class="sec-title">Legal Standing and Consolidated Funding Sources</div>
+      <div class="sec-sub">Every proposal below is legally anchored and centrally fundable — nothing requires new district budget</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="col-card">
+      <span class="col-card-title">LEGAL FRAMEWORK</span>
+      <p><strong>M.K. Ranjitsinh vs Union of India (2024)</strong> — Supreme Court: protection against the adverse effects of climate change read into Article 21.<br><br>
+      <strong>Verein KlimaSeniorinnen Schweiz vs Switzerland (2024)</strong> — ECtHR: state failure to protect citizens from extreme heat is a human-rights violation.<br><br>
+      <strong>Urgenda Foundation vs State of the Netherlands (2019)</strong> — Dutch Supreme Court: foreseeable climate risk cannot be waived as an unforeseeable act of God.<br><br>
+      <strong>M.C. Mehta vs Kamal Nath (1997) 1 SCC 388</strong> — Supreme Court: the Public Trust Doctrine — floodplains and wetlands are held in trust for future generations.<br><br>
+      <strong>Sections 30 &amp; 34, Disaster Management Act, 2005</strong> — District Authority's general and threatening-situation powers.<br><br>
+      <strong>Article 243ZD</strong> — constitutional basis for the District Planning Committee to adopt the DCVI framework.</p>
+    </div>
+    <div class="col-card">
+      <span class="col-card-title">CONSOLIDATED FUNDING SOURCES</span>
+      <p><strong>National Disaster Response Fund / SDRF</strong> — early-warning infrastructure and cooling centres.<br><br>
+      <strong>NPCCHH</strong> (National Centre for Disease Control) — climate-health integration and PHC hardening.<br><br>
+      <strong>AMRUT 2.0</strong> (MoHUA) — resilient urban infrastructure.<br><br>
+      <strong>MGNREGS</strong> (Ministry of Rural Development) — dynamic heatwave work-hour adjustment, at zero new scheme cost.<br><br>
+      <strong>National Mission on Sustainable Habitat</strong> — cross-departmental urban climate convergence and ULB/Panchayat capacity building.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION V -->
+<div class="sheet dark" style="background:#0a1628;">
+  <div class="sec-header">
+    <span class="sec-num dark-badge">SECTION V</span>
+    <div>
+      <div class="sec-title light">Safeguards Against the Present Risks</div>
+      <div class="sec-sub light">Why NCRF is designed to complement, not duplicate, the ongoing response</div>
+    </div>
+  </div>
+
+  <div class="safeguard">
+    <span class="safeguard-title">SAFEGUARD 1 — NO NEW BUDGET SANCTION REQUIRED</span>
+    <p>Every component is funded through existing central schemes (Section IV). The District Administration is asked only to direct coordination between APSDMA, DM&amp;HO, and the relevant central ministries — not to allocate new money.</p>
+  </div>
+  <div class="safeguard">
+    <span class="safeguard-title">SAFEGUARD 2 — EXPLICITLY COMPLEMENTARY TO ONGOING WORKS</span>
+    <p>NCRF does not propose any alternative to the Budameru engineering programme already under construction. It proposes the early-warning, health, governance, and equity layers that programme does not itself cover.</p>
+  </div>
+  <div class="safeguard">
+    <span class="safeguard-title">SAFEGUARD 3 — RECOMMENDATIONS, NOT DIRECTIVES</span>
+    <p>Every action in Section VI is framed for the concerned authority's own consideration and discretion in exercising its existing statutory powers — this framework does not presume to instruct any office on how to use them.</p>
+  </div>
+  <div class="safeguard">
+    <span class="safeguard-title">SAFEGUARD 4 — FULL CONSISTENCY WITH EXISTING LAW</span>
+    <p>NCRF seeks no new legislation. It operationalises the Disaster Management Act, 2005, and binding Supreme Court and ECtHR precedent, into a working, monitored, district-level system.</p>
+  </div>
+</div>
+
+<!-- SECTION VI -->
+<div class="sheet" style="background:#f8fafc;">
+  <div class="sec-header">
+    <span class="sec-num">SECTION VI</span>
+    <div>
+      <div class="sec-title">Implementation Roadmap — For the Authorities' Consideration</div>
+      <div class="sec-sub">Five specific, sequenced actions ahead of the next monsoon and summer</div>
+    </div>
+  </div>
+
+  <p class="lead">We respectfully request that the following actions be considered for examination and implementation by the concerned authorities, each building on the one before it.</p>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><div class="step-title">Integrate Early-Warning Sensors into the Existing Budameru DPR</div><p>Request the Water Resources Department to examine including SACHET-linked sensor and siren deployment as a component of the ongoing Budameru modernisation Detailed Project Report, rather than as a separate project.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><div class="step-title">Commission a Formal NTR District Heat Action Plan</div><p>Request APSDMA and the District Medical &amp; Health Officer to draft and adopt a documented Heat Action Plan ahead of the 2027 summer, modelled on Ahmedabad's.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><div class="step-title">Commission the Ward-Level District Climate Vulnerability Index</div><p>Direct the District Planning Officer, with local academic institutions, to map ward-level socio-ecological vulnerability to guide capital allocation.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><div class="step-title">Formalise the Governance &amp; Accountability Structure</div><p>Adopt the Relief-Preparedness-Prevention-Resilience model as the district's standing operating framework, with a public dashboard tracking implementation of each commitment above.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><div class="step-title">Request Central Co-Funding for the Combined Programme</div><p>Formally request NDMA and the Ministry of Jal Shakti to consider the early-warning, health, and governance components as part of central support for the Budameru modernisation programme.</p></div></div>
+  </div>
+</div>
+
+<!-- SECTION VII -->
+<div class="sheet dark" style="background:#0a1628;">
+  <div class="sec-header">
+    <span class="sec-num dark-badge">SECTION VII</span>
+    <div>
+      <div class="sec-title light">NTR District, the Krishna Delta, and Andhra Pradesh — Gaining Together</div>
+      <div class="sec-sub light">One framework, complementing one ongoing programme</div>
+    </div>
+  </div>
+
+  <div class="win-grid">
+    <div class="win-card tn">
+      <span class="win-flag">NTR DISTRICT GAINS</span>
+      <ul>
+        <li>A standing early-warning system ahead of the next monsoon</li>
+        <li>Health infrastructure that survives grid failure during disasters</li>
+        <li>A documented, ward-mapped basis for prioritising relief</li>
+        <li>Zero new budget cost, layered onto an already-funded programme</li>
+      </ul>
+    </div>
+    <div class="win-card ka">
+      <span class="win-flag">KRISHNA DELTA GAINS</span>
+      <ul>
+        <li>Downstream flood warning extending beyond the city boundary</li>
+        <li>Livelihood protection for tenant farmers and vendors via insurance expansion</li>
+        <li>Legal clarity on developer liability for floodplain encroachment</li>
+      </ul>
+    </div>
+    <div class="win-card in">
+      <span class="win-flag">ANDHRA PRADESH GAINS</span>
+      <ul>
+        <li>A replicable district model pairing engineering with anticipatory governance</li>
+        <li>Demonstrated administrative capacity ahead of central scheme reviews</li>
+        <li>A documented answer to the accountability gap raised after the 2024 floods</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="sheet">
+  <div class="sec-header">
+    <span class="sec-num">CONCLUSION</span>
+    <div><div class="sec-title">Completing, Not Replacing, the Response Already Underway</div></div>
+  </div>
+
+  <p class="lead">NTR District has already shown it can respond decisively once a disaster strikes and can fund a serious engineering solution to reduce its scale. NCRF asks for the remaining, less visible layer — warning people before it arrives, keeping health systems running through it, governing it as routine rather than exception, and directing relief to those least able to absorb it first.</p>
+
+  <p>The Viksit Bharat Policy Cell is available for any further discussion, presentation, or consultation at the convenience of the Collectorate, the Water Resources Department, or APSDMA, and would welcome the opportunity to present this framework in detail.</p>
+
+  <div class="callout gold">
+    <p>"The Budameru's waters can be engineered smaller. The warning a resident receives, and the readiness of the health system that meets them, still has to be built — and can be, before the next monsoon."</p>
+  </div>
+
+  <div class="signature-block">
+    <div class="valediction">Thanking you, yours faithfully,</div>
+    <div class="sig-name">Viksit Bharat Policy Cell (VBPC)</div>
+    <div class="sig-detail">
+      <span>Registered on the MY Bharat Portal — MBP74350027</span>
+      <span>Krishna District, Andhra Pradesh</span>
+      <span>Email: viksitbharatpolicycell@gmail.com</span>
+      <span>Website: vbpc.in</span>
+      <span>Ref: VBPC/AP/2026/NTR-02 &nbsp;|&nbsp; Date: September 2026</span>
+    </div>
+  </div>
+
+  <div class="submission-note">
+    <strong>Note on Submission</strong>
+    <p>This representation is submitted in the public interest for the consideration of the competent authorities. It is intended to complement, and does not seek to alter, the District Administration's ongoing Budameru modernisation programme.</p>
+  </div>
+</div>
+
+<div class="footer-bar"><div class="footer-teal"></div><div class="footer-gold"></div><div class="footer-navy"></div></div>
+
+</div>
+</body>
+</html>
